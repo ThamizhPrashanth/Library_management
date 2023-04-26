@@ -1,0 +1,51 @@
+# Library_management
+
+class library:
+    def __init__(self, data):
+        self.booklist = data
+
+    def showBooks(self):
+        for i in self.booklist:
+            print(i)
+
+    def lendBook(self, bookname):
+        if bookname in self.booklist:
+            self.booklist.remove(bookname)
+            print("Thankyou your request is fullfilled")
+        else:
+            print("The book is not available")
+
+    def returnbooks(self, bookname):
+        self.booklist.append(bookname)
+        print("Thank you for returning the book")
+
+
+class customer:
+    def reqbook(self):
+        book = input("Enter the book name")
+        self.book = input()
+        return self.book
+
+    def returnbook(self):
+        book = input("Enter the name of the book you want to return")
+        return self.book
+
+central_library= library(
+    ["The Magic Tree", "Wizards of Ice", "Call of the Forest", "Tower To The Stars", "Romance of the Three Kingdoms",
+     "Western union"])
+customer_Thamizh = customer()
+
+while True:
+    print("select the option below")
+    print("\n1-show list of books\n2-lend a book\n3-retun a book\n4-exit")
+    option = int(input())
+    if option == 1:
+        central_library.showBooks()
+    if option == 2:
+        # requestedBook = customer_Thamizh.reqbook()
+        central_library.lendBook(customer_Thamizh.reqbook())
+    if option == 3:
+        # returnedbooks = customer_Thamizh.returnbook()
+        central_library.returnbooks(customer_Thamizh.returnbook())
+    elif option == 4:
+        break
